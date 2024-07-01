@@ -10,50 +10,36 @@ import {
 import { Participant } from "../../components/Participant";
 
 import { styles } from "./styles";
+import { useState } from "react";
 
 export function Home() {
-  const participants = [
-    "Welbert",
-    "João",
-    "Maria",
-    "Pedro",
-    "Ana",
-    "José",
-    "Carlos",
-    "Mariana",
-    "Felipe",
-    "Lucas",
-    "Gabriel",
-    "Rafael",
-    "Fernanda",
-    "Juliana",
-    "Paula",
-    "Ricardo",
-    "Rodrigo",
-    "Vitor",
-    "Vinícius",
-    "Gustavo",
-  ];
+  const [participants, setParticipants] = useState(["Welbert"]);
 
   const handleParticipantAdd = () => {
-    if(participants.includes("Welbert")) {
-      return Alert.alert("Participante existe", "Já existe um participante com esse nome.")
+    if (participants.includes("Rodrigo")) {
+      return Alert.alert(
+        "Participante existe",
+        "Já existe um participante com esse nome."
+      );
     }
+
+    setParticipants((prevState) => [...prevState, "Ana"]);
+
+    console.log(participants);
   };
 
   const handleParticipantRemove = (name: string) => {
     Alert.alert("Remover", `Remover o participante ${name}?`, [
       {
         text: "Não",
-        style: "cancel"
+        style: "cancel",
       },
       {
         text: "Sim",
-        onPress: () => Alert.alert("Deletado")
+        onPress: () => Alert.alert("Deletado"),
       },
-    ])
-
-  }
+    ]);
+  };
 
   return (
     <View style={styles.container}>
@@ -89,5 +75,5 @@ export function Home() {
         )}
       />
     </View>
-  )
+  );
 }
