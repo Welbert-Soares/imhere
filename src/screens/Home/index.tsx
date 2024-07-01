@@ -17,7 +17,6 @@ export function Home() {
   const [participantName, setParticipantName] = useState("");
 
   const handleParticipantAdd = () => {
-
     if (participants.includes(participantName)) {
       return Alert.alert(
         "Participante existe",
@@ -37,10 +36,15 @@ export function Home() {
       },
       {
         text: "Sim",
-        onPress: () => Alert.alert("Deletado"),
+        onPress: () =>
+          setParticipants((prevState) =>
+            prevState.filter((participant) => participant !== name)
+          ),
       },
     ]);
   };
+
+
 
   return (
     <View style={styles.container}>
