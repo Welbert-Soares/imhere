@@ -59,7 +59,7 @@ export function Home() {
       </View>
 
       <FlatList
-        data={ participants }
+        data={participants}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <Participant
@@ -76,5 +76,5 @@ export function Home() {
         )}
       />
     </View>
-  );
+  )
 }
