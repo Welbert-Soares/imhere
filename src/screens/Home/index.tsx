@@ -17,7 +17,13 @@ export function Home() {
   const [participantName, setParticipantName] = useState("");
 
   const handleParticipantAdd = () => {
+
+    if (!participantName || participantName.trim() === "") {
+      return Alert.alert("Nome inválido", "O nome do participante é obrigatório.");
+    }
+
     if (participants.includes(participantName)) {
+
       return Alert.alert(
         "Participante existe",
         "Já existe um participante com esse nome."
@@ -29,6 +35,7 @@ export function Home() {
   };
 
   const handleParticipantRemove = (name: string) => {
+
     Alert.alert("Remover", `Remover o participante ${name}?`, [
       {
         text: "Não",
@@ -43,8 +50,6 @@ export function Home() {
       },
     ]);
   };
-
-
 
   return (
     <View style={styles.container}>
